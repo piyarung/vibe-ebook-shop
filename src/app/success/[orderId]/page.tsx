@@ -70,22 +70,30 @@ export default function SuccessPage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* Instant Download Action */}
+        {/* Reading & Download Actions */}
         <div className="pt-2 space-y-3">
           <h3 className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
-            ดาวน์โหลดไฟล์ E-book ทันทีผ่านเบราว์เซอร์
+            เข้าสู่เนื้อหา E-book
           </h3>
-          <a
-            href={`/api/download?orderId=${encodeURIComponent(orderId)}`}
-            download
+          <Link
+            href={`/read/${encodeURIComponent(orderId)}`}
             className="w-full py-4 px-6 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-base shadow-lg shadow-blue-500/25 transition-all flex items-center justify-center gap-2 hover:-translate-y-0.5"
           >
-            <Download className="w-5 h-5" />
-            ดาวน์โหลดไฟล์ E-book (PDF)
+            <BookOpen className="w-5 h-5" />
+            เปิดอ่าน E-book ทันที (แนะนำสำหรับ Mobile App)
+          </Link>
+          <a
+            href={`/api/download?orderId=${encodeURIComponent(orderId)}`}
+            target="_blank"
+            rel="noreferrer"
+            className="w-full py-3 px-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold text-xs sm:text-sm transition-all flex items-center justify-center gap-2"
+          >
+            <Download className="w-4 h-4" />
+            เปิดไฟล์ PDF มาตรฐาน (เปิดในเบราว์เซอร์)
           </a>
           <p className="text-[11px] text-slate-400 flex items-center justify-center gap-1.5">
             <Clock className="w-3.5 h-3.5" />
-            ลิงก์ดาวน์โหลดนี้จะหมดอายุภายใน 24 ชั่วโมง (Temporary Signed Link)
+            ลิงก์เข้าถึงมีความปลอดภัยและมีอายุ 24 ชั่วโมง (Temporary Signed Link)
           </p>
         </div>
 

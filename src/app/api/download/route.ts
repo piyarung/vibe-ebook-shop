@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getLocalOrder } from '@/lib/mock-data';
 import { getSupabaseAdmin, isSupabaseConfigured } from '@/lib/supabase';
+import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const orderId = searchParams.get('orderId');
+  const forceDownload = searchParams.get('download') === '1';
 
   if (!orderId) {
     return new NextResponse('Invalid order request', { status: 400 });
@@ -13,7 +15,9 @@ export async function GET(req: NextRequest) {
   let order: {
     id: string;
     customerName: string;
+    customerEmail?: string;
     bookTitle: string;
+    bookPrice?: number;
     status: string;
   } | null = null;
 
@@ -21,14 +25,16 @@ export async function GET(req: NextRequest) {
   if (isSupabaseConfigured() && supabaseAdmin) {
     const { data } = await supabaseAdmin
       .from('orders')
-      .select('id, customer_name, book_title, status')
+      .select('id, customer_name, customer_email, book_title, book_price, status')
       .eq('id', orderId)
       .single();
     if (data) {
       order = {
         id: data.id,
         customerName: data.customer_name,
+        customerEmail: data.customer_email,
         bookTitle: data.book_title,
+        bookPrice: data.book_price,
         status: data.status,
       };
     }
@@ -40,7 +46,9 @@ export async function GET(req: NextRequest) {
       order = {
         id: local.id,
         customerName: local.customerName,
+        customerEmail: local.customerEmail,
         bookTitle: local.bookTitle,
+        bookPrice: local.bookPrice,
         status: local.status,
       };
     }
@@ -53,47 +61,158 @@ export async function GET(req: NextRequest) {
     });
   }
 
-  // Generate a mock PDF or downloadable sample file
-  const samplePdfContent = `%PDF-1.4
-1 0 obj << /Type /Catalog /Pages 2 0 R >> endobj
-2 0 obj << /Type /Pages /Kids [3 0 R] /Count 1 >> endobj
-3 0 obj << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >> endobj
-4 0 obj << /Length 200 >> stream
-BT
-/F1 20 Tf
-50 720 Td
-(Vibe Coding E-book Shop - DEMO DOWNLOAD) Tj
-0 -30 Td
-/F1 14 Tf
-(Order: ${order.id}) Tj
-0 -24 Td
-(Customer: ${order.customerName}) Tj
-0 -24 Td
-(Book: ${order.bookTitle}) Tj
-0 -40 Td
-(Thank you for your purchase! This is a demo e-book file.) Tj
-ET
-endstream
-endobj
-5 0 obj << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> endobj
-xref
-0 6
-0000000000 65535 f 
-0000000009 00000 n 
-0000000058 00000 n 
-0000000115 00000 n 
-0000000244 00000 n 
-0000000495 00000 n 
-trailer << /Size 6 /Root 1 0 R >>
-startxref
-566
-%%EOF`;
+  try {
+    // Generate a 100% valid, standard PDF using pdf-lib
+    const pdfDoc = await PDFDocument.create();
+    const timesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman);
+    const timesBoldFont = await pdfDoc.embedFont(StandardFonts.TimesRomanBold);
+    const courierFont = await pdfDoc.embedFont(StandardFonts.Courier);
 
-  return new NextResponse(samplePdfContent, {
-    status: 200,
-    headers: {
-      'Content-Type': 'application/pdf',
-      'Content-Disposition': `attachment; filename="Ebook-${order.id}.pdf"`,
-    },
-  });
+    // Page 1: Cover & License
+    const page = pdfDoc.addPage([595.28, 841.89]); // A4 size in points
+    const { width, height } = page.getSize();
+
+    // Top Header Banner
+    page.drawRectangle({
+      x: 0,
+      y: height - 100,
+      width: width,
+      height: 100,
+      color: rgb(0.12, 0.35, 0.85),
+    });
+
+    page.drawText('VIBE CODING E-BOOK READER', {
+      x: 50,
+      y: height - 55,
+      size: 20,
+      font: timesBoldFont,
+      color: rgb(1, 1, 1),
+    });
+
+    page.drawText('Official Digital Edition - DEMO ONLY', {
+      x: 50,
+      y: height - 78,
+      size: 11,
+      font: timesRomanFont,
+      color: rgb(0.85, 0.9, 1),
+    });
+
+    // Content Card
+    page.drawRectangle({
+      x: 45,
+      y: height - 260,
+      width: width - 90,
+      height: 130,
+      color: rgb(0.96, 0.97, 0.99),
+      borderColor: rgb(0.85, 0.88, 0.92),
+      borderWidth: 1,
+    });
+
+    page.drawText('Order Information & Verification', {
+      x: 65,
+      y: height - 160,
+      size: 14,
+      font: timesBoldFont,
+      color: rgb(0.1, 0.15, 0.25),
+    });
+
+    page.drawText(`Order ID: ${order.id}`, {
+      x: 65,
+      y: height - 185,
+      size: 12,
+      font: courierFont,
+      color: rgb(0.12, 0.35, 0.85),
+    });
+
+    page.drawText(`Licensed to: ${order.customerName || 'Customer'}`, {
+      x: 65,
+      y: height - 208,
+      size: 11,
+      font: timesRomanFont,
+      color: rgb(0.2, 0.25, 0.3),
+    });
+
+    page.drawText(`Payment Status: PAID (Verified Digital Copy)`, {
+      x: 65,
+      y: height - 230,
+      size: 11,
+      font: timesBoldFont,
+      color: rgb(0.1, 0.6, 0.3),
+    });
+
+    // Book Title Section
+    page.drawText('BOOK TITLE:', {
+      x: 50,
+      y: height - 310,
+      size: 12,
+      font: timesBoldFont,
+      color: rgb(0.4, 0.45, 0.5),
+    });
+
+    // Clean ascii-safe display for standard PDF font
+    page.drawText(`${order.bookTitle}`, {
+      x: 50,
+      y: height - 335,
+      size: 14,
+      font: timesBoldFont,
+      color: rgb(0.1, 0.1, 0.1),
+    });
+
+    // Chapter Preview / Sample content
+    page.drawText('CHAPTER HIGHLIGHTS & CONTENT SUMMARY', {
+      x: 50,
+      y: height - 390,
+      size: 12,
+      font: timesBoldFont,
+      color: rgb(0.2, 0.3, 0.5),
+    });
+
+    const lines = [
+      'Chapter 1: Modern Cloud Architecture & Vibe Coding Workflow',
+      'Chapter 2: Fullstack Next.js App Router and Server-side API Integration',
+      'Chapter 3: Database Security with Supabase Row Level Security (RLS)',
+      'Chapter 4: Packaging Web Applications into Android WebView with MIT App Inventor',
+      'Chapter 5: Production Deployment, Environment Variables, and Security Checklist',
+      '',
+      'Thank you for using Vibe Coding E-book Shop!',
+      'This verified PDF file was generated for mobile reading and compliance testing.',
+    ];
+
+    let currentY = height - 420;
+    for (const line of lines) {
+      page.drawText(line, {
+        x: 50,
+        y: currentY,
+        size: 10,
+        font: timesRomanFont,
+        color: rgb(0.25, 0.25, 0.3),
+      });
+      currentY -= 20;
+    }
+
+    // Footer
+    page.drawText('Generated by Vibe Coding E-book Shop Platform - MIT App Inventor & Mobile Ready', {
+      x: 50,
+      y: 40,
+      size: 9,
+      font: timesRomanFont,
+      color: rgb(0.6, 0.65, 0.7),
+    });
+
+    const pdfBytes = await pdfDoc.save();
+
+    const disposition = forceDownload ? 'attachment' : 'inline';
+
+    return new NextResponse(Buffer.from(pdfBytes), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/pdf',
+        'Content-Disposition': `${disposition}; filename="Ebook-${order.id}.pdf"`,
+        'Cache-Control': 'no-cache',
+      },
+    });
+  } catch (err: any) {
+    console.error('PDF generation error:', err);
+    return new NextResponse('Error generating PDF file: ' + err.message, { status: 500 });
+  }
 }
