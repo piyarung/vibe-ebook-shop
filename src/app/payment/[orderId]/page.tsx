@@ -24,10 +24,20 @@ export default function MockPaymentPage({ params }: PageProps) {
     setErrorMsg('');
 
     try {
+      // Retrieve stored order info from local history if available
+      const history = typeof window !== 'undefined' ? (JSON.parse(localStorage.getItem('vibe_ebook_order_history') || '[]') as any[]) : [];
+      const current = history.find((o: any) => o.id === orderId);
+
       const res = await fetch('/api/pay', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ orderId }),
+        body: JSON.stringify({ 
+          orderId,
+          customerName: current?.customerName,
+          customerEmail: current?.customerEmail,
+          bookTitle: current?.bookTitle,
+          bookPrice: current?.bookPrice,
+        }),
       });
 
       const data = await res.json();
