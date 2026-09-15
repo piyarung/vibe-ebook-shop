@@ -60,60 +60,50 @@ USING (true);
 -- By default, without a public UPDATE policy, updates are restricted to the service_role key.
 
 -- 6. Insert Seed Books Data
+-- 6. Insert Seed Books Data (มาจากหัวข้อแลป 4: mediaplayer, tarot, taskmanager)
 INSERT INTO public.books (id, title, author, description, detail, price, cover_url, category, page_count, file_path)
 VALUES 
 (
   'book-1',
-  'Mastering Vibe Coding: สร้างเว็บและโมบายแอปยุคใหม่ด้วย AI',
-  'กิตติศักดิ์ พัฒนาการ',
-  'เรียนรู้วิธีการทำงานร่วมกับ AI Coding Assistant อย่างมีเป้าหมาย พัฒนาเว็บและแอปตั้งแต่ 0 ถึง Deploy ได้เร็วขึ้น 10 เท่า',
-  'หนังสือเล่มนี้จะพาคุณเจาะลึกกระบวนการ Vibe Coding อย่างเป็นระบบ ไม่ใช่แค่การ prompt สุ่มสี่สุ่มห้า แต่คือการออกแบบสถาปัตยกรรม กำกับ AI ตรวจสอบความถูกต้องของโค้ด และส่งมอบผลงานจริงด้วย Next.js, Supabase และการ Wrap เป็น Mobile App',
-  290,
-  'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80',
-  'AI & Software Engineering',
-  280,
-  'mastering-vibe-coding.pdf'
+  'คู่มือการพัฒนาและการใช้งาน: 90s Retro Media Player PRO',
+  'นักศึกษาผู้จัดทำโครงงานวิชาเลือกสรร',
+  'โปรแกรมเล่นเพลงบนเดสก์ท็อปสไตล์ Retro Hi-Fi Audio Deck ยุค 90s ผสมผสานหน้าปัดดิจิทัล VFD สีเขียวนีออน และปุ่มควบคุมกลไกสัมผัส 3D พร้อมระบบคลังเพลง Playlist Rack ครบวงจร',
+  '90s Retro Media Player PRO (v1.0) เป็นโปรแกรมเล่นเพลงบนเดสก์ท็อปที่ได้รับการออกแบบภายใต้แนวคิด Retro Hi-Fi Audio Deck & Winamp Classic ในยุค 90s ผสมผสานหน้าปัดแสดงผลดิจิทัล LCD/VFD สีเขียวนีออน และปุ่มควบคุมแบบสัมผัสกลไก 3D รองรับการเล่นไฟล์เสียงมาตรฐาน เช่น .mp3, .wav, .ogg, .m4a, .flac พร้อมระบบจัดการคลังเพลง (Playlist Rack) ที่ครบวงจร พร้อมฟังก์ชัน Mute, Volume Control, Track Position Slider และปุ่มควบคุมการเล่นแบบ Real-time',
+  199,
+  'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80',
+  'Desktop Audio Application',
+  86,
+  'retro-media-player-guide.pdf'
 ),
 (
   'book-2',
-  'Fullstack Next.js & Supabase ฉบับปฏิบัติการจริง',
-  'วรวิทย์ เทคโนโลยี',
-  'คู่มือพัฒนาเว็บแอปพลิเคชันสมัยใหม่ด้วย Next.js, TypeScript, Tailwind CSS และระบบจัดการฐานข้อมูล Supabase',
-  'ครอบคลุมเทคนิคการสร้าง API Routes, Server Actions, Authentication, Row Level Security (RLS) และการจัดการ Storage สำหรับไฟล์ขนาดใหญ่ พร้อมกรณีศึกษา E-commerce และ SaaS',
-  350,
-  'https://images.unsplash.com/photo-1532012164546-f432f2e37271?auto=format&fit=crop&w=800&q=80',
-  'Web Development',
-  340,
-  'fullstack-nextjs-supabase.pdf'
+  'คู่มือการพัฒนาและการใช้งาน: Rider-Waite 3-Card Tarot Reading App',
+  'นักศึกษาผู้จัดทำโครงงานวิชาเลือกสรร',
+  'โปรแกรมทำนายดวงชะตาด้วยไพ่ทาโรต์ตามศาสตร์โบราณ จำลองการวางไพ่ 3 มิติเวลา (อดีต, ปัจจุบัน, อนาคต) ธีม Mystic Velvet & Gold พร้อมเครื่องเล่นดนตรีขับกล่อมบรรยากาศ BGM Audio Deck',
+  'Rider-Waite 3-Card Tarot Reading Application (v1.0) เป็นโปรแกรมทำนายดวงชะตาด้วยไพ่ทาโรต์ตามศาสตร์โบราณ โดยจำลองรูปแบบการวางไพ่ 3 ใบ (3-Card Spread) ได้แก่ 1. อดีต (Past) 2. ปัจจุบัน (Present) 3. อนาคต (Future) ตัวโปรแกรมได้รับการออกแบบในธีม Mystic Velvet & Gold โต๊ะกำมะหยี่สีม่วงมิดไนท์ประดับขอบทองคำ พร้อมเครื่องเล่นดนตรีขับกล่อมบรรยากาศ (BGM Audio Deck) ในตัว ควบคุมระดับเสียงและเลือกเพลงได้อิสระ',
+  249,
+  'https://images.unsplash.com/photo-1633511090164-b43840ea1607?auto=format&fit=crop&w=800&q=80',
+  'Lifestyle & Divination Software',
+  112,
+  'tarot-app-guide.pdf'
 ),
 (
   'book-3',
-  'Modern Cloud & Vercel Deployment Guide',
-  'ณัฐพงษ์ คลาวด์มาสเตอร์',
-  'แนวทางการนำโปรเจกต์ขึ้นสู่ Production อย่างมั่นใจ พร้อมระบบ CI/CD, Environment Variables และ Performance Tuning',
-  'เรียนรู้วิธีการเชื่อมต่อ GitHub กับ Vercel, การจัดการ Environment Variables ทั้งสำหรับ staging และ production, การตรวจสอบ Edge Functions และการ optimize ภาพและ assets',
-  240,
-  'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=80',
-  'DevOps & Cloud',
-  220,
-  'modern-cloud-deployment.pdf'
-),
-(
-  'book-4',
-  'Android WebView & MIT App Inventor Pro',
-  'สมชาย โมบายเดฟ',
-  'เปลี่ยนเว็บของคุณให้กลายเป็นแอปพลิเคชันมือถือ Android พร้อมใช้งาน ส่งต่อและเผยแพร่ได้อย่างง่ายดาย',
-  'สอนตั้งแต่การสร้างโปรเจกต์ใน MIT App Inventor การควบคุม WebViewer การจัดการปุ่มย้อนกลับ (Back Navigation) การตั้งค่าความปลอดภัย SSL ไปจนถึงการ Build เป็นไฟล์ .apk และ Export .aia เพื่อนำส่งงาน',
-  199,
-  'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80',
-  'Mobile Application',
-  190,
-  'android-webview-guide.pdf'
+  'คู่มือการพัฒนาและการใช้งาน: SQLite Task Manager PRO (Futuristic Edition)',
+  'นักศึกษาผู้จัดทำโครงงานวิชาเลือกสรร',
+  'ระบบบริหารจัดการงานส่วนบุคคลระดับมืออาชีพ ผสานฐานข้อมูล SQLite และดีไซน์ Futuristic Minimalist พร้อม Dashboard สถิติ, ถังขยะกู้คืนงาน, Export/Import CSV และระบบสำรองฐานข้อมูล',
+  'SQLite Task Manager PRO (v2.0) - Futuristic Minimalist Edition เป็นระบบบริหารจัดการงานส่วนบุคคลระดับมืออาชีพที่ผสานประสิทธิภาพของฐานข้อมูล SQLite เข้ากับส่วนติดต่อผู้ใช้สไตล์ Futuristic Minimalist เรียบหรู คมชัด และทันสมัย รองรับการยืนยันตัวตน (Authentication), จัดหมวดหมู่งาน, จัดลำดับความสำคัญ (Low/Medium/High/Urgent), สรุปสถิติผ่าน Dashboard Cards, ถังขยะกู้คืนงาน (Recycle Bin), นำเข้า-ส่งออก CSV, ระบบแจ้งเตือนงานด่วน, สลับธีมมืด/สว่าง (Dark/Light Mode) และการสำรอง-กู้คืนฐานข้อมูล (Backup & Restore)',
+  290,
+  'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=800&q=80',
+  'Productivity & Database Engineering',
+  149,
+  'task-manager-pro-guide.pdf'
 )
 ON CONFLICT (id) DO UPDATE SET
   title = EXCLUDED.title,
   price = EXCLUDED.price,
-  description = EXCLUDED.description;
+  description = EXCLUDED.description,
+  detail = EXCLUDED.detail;
 
 -- ==============================================================================
 -- 7. Supabase Storage Setup (Private Bucket)

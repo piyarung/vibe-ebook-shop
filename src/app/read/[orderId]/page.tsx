@@ -19,12 +19,25 @@ export default function EbookReaderPage({ params }: PageProps) {
   const [fontSize, setFontSize] = useState<'normal' | 'large'>('normal');
 
   useEffect(() => {
-    // Check local storage or fetch order
+    // Check local storage history first
+    try {
+      const history = typeof window !== 'undefined' ? (JSON.parse(localStorage.getItem('vibe_ebook_order_history') || '[]') as any[]) : [];
+      const found = history.find((o: any) => o.id === orderId);
+      if (found) {
+        setOrder(found);
+        setLoading(false);
+        return;
+      }
+    } catch (e) {
+      console.warn('Error reading order from history in reader:', e);
+    }
+
+    // Check in-memory store
     const local = getLocalOrder(orderId);
     if (local) {
       setOrder(local);
     } else {
-      // Fallback dummy order for viewing
+      // Fallback order for viewing
       const books = getLocalBooks();
       setOrder({
         id: orderId,

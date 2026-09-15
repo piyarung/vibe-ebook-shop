@@ -3,55 +3,42 @@ import { Book, Order } from '@/types';
 export const BOOKS_DATA: Book[] = [
   {
     id: 'book-1',
-    title: 'Mastering Vibe Coding: สร้างเว็บและโมบายแอปยุคใหม่ด้วย AI',
-    author: 'กิตติศักดิ์ พัฒนาการ',
-    description: 'เรียนรู้วิธีการทำงานร่วมกับ AI Coding Assistant อย่างมีเป้าหมาย พัฒนาเว็บและแอปตั้งแต่ 0 ถึง Deploy ได้เร็วขึ้น 10 เท่า',
-    detail: 'หนังสือเล่มนี้จะพาคุณเจาะลึกกระบวนการ Vibe Coding อย่างเป็นระบบ ไม่ใช่แค่การ prompt สุ่มสี่สุ่มห้า แต่คือการออกแบบสถาปัตยกรรม กำกับ AI ตรวจสอบความถูกต้องของโค้ด และส่งมอบผลงานจริงด้วย Next.js, Supabase และการ Wrap เป็น Mobile App',
-    price: 290,
-    coverUrl: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80',
-    category: 'AI & Software Engineering',
-    pageCount: 280,
-    sampleChapter: 'บทที่ 1: กรอบความคิด Vibe Coding และการควบคุมคุณภาพโค้ด\nบทที่ 2: สถาปัตยกรรม Next.js App Router สมัยใหม่\nบทที่ 3: การจัดการ State และ Database RLS บน Supabase\nบทที่ 4: การแปลง Web App สู่ Android Wrapper ด้วย MIT App Inventor',
-    filePath: 'ebooks/mastering-vibe-coding.pdf'
+    title: 'คู่มือการพัฒนาและการใช้งาน: 90s Retro Media Player PRO',
+    author: 'นักศึกษาผู้จัดทำโครงงานวิชาเลือกสรร',
+    description: 'โปรแกรมเล่นเพลงบนเดสก์ท็อปสไตล์ Retro Hi-Fi Audio Deck ยุค 90s ผสมผสานหน้าปัดดิจิทัล VFD สีเขียวนีออน และปุ่มควบคุมกลไกสัมผัส 3D พร้อมระบบคลังเพลง Playlist Rack ครบวงจร',
+    detail: '90s Retro Media Player PRO (v1.0) เป็นโปรแกรมเล่นเพลงบนเดสก์ท็อปที่ได้รับการออกแบบภายใต้แนวคิด Retro Hi-Fi Audio Deck & Winamp Classic ในยุค 90s ผสมผสานหน้าปัดแสดงผลดิจิทัล LCD/VFD สีเขียวนีออน และปุ่มควบคุมแบบสัมผัสกลไก 3D รองรับการเล่นไฟล์เสียงมาตรฐาน เช่น .mp3, .wav, .ogg, .m4a, .flac พร้อมระบบจัดการคลังเพลง (Playlist Rack) ที่ครบวงจร พร้อมฟังก์ชัน Mute, Volume Control, Track Position Slider และปุ่มควบคุมการเล่นแบบ Real-time',
+    price: 199,
+    coverUrl: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80',
+    category: 'Desktop Audio Application',
+    pageCount: 86,
+    sampleChapter: 'บทที่ 1: ภาพรวมสถาปัตยกรรมและแนวคิด 90s Retro Audio Deck\nบทที่ 2: วิธีการเปิดใช้งานโปรแกรมและข้อกำหนดระบบ (Portable Package & Python)\nบทที่ 3: แนะนำส่วนติดต่อผู้ใช้ (VFD Display, Sliders, Transport Controls)\nบทที่ 4: ขั้นตอนการใช้งานฟังก์ชัน Playback และ Playlist Management\nบทที่ 5: การจัดจำหน่ายและ Portable Package Distribution',
+    filePath: 'ebooks/retro-media-player-guide.pdf'
   },
   {
     id: 'book-2',
-    title: 'Fullstack Next.js & Supabase ฉบับปฏิบัติการจริง',
-    author: 'วรวิทย์ เทคโนโลยี',
-    description: 'คู่มือพัฒนาเว็บแอปพลิเคชันสมัยใหม่ด้วย Next.js, TypeScript, Tailwind CSS และระบบจัดการฐานข้อมูล Supabase',
-    detail: 'ครอบคลุมเทคนิคการสร้าง API Routes, Server Actions, Authentication, Row Level Security (RLS) และการจัดการ Storage สำหรับไฟล์ขนาดใหญ่ พร้อมกรณีศึกษา E-commerce และ SaaS',
-    price: 350,
-    coverUrl: 'https://images.unsplash.com/photo-1532012164546-f432f2e37271?auto=format&fit=crop&w=800&q=80',
-    category: 'Web Development',
-    pageCount: 340,
-    sampleChapter: 'บทที่ 1: ติดตั้งและวางโครงสร้าง Next.js ให้รองรับ Scale\nบทที่ 2: เชื่อมต่อ Supabase Client & Server Role\nบทที่ 3: ออกแบบฐานข้อมูล Orders และ Transactions\nบทที่ 4: ความปลอดภัยและการตรวจสอบสิทธิ์ด้วย RLS',
-    filePath: 'ebooks/fullstack-nextjs-supabase.pdf'
+    title: 'คู่มือการพัฒนาและการใช้งาน: Rider-Waite 3-Card Tarot Reading App',
+    author: 'นักศึกษาผู้จัดทำโครงงานวิชาเลือกสรร',
+    description: 'โปรแกรมทำนายดวงชะตาด้วยไพ่ทาโรต์ตามศาสตร์โบราณ จำลองการวางไพ่ 3 มิติเวลา (อดีต, ปัจจุบัน, อนาคต) ธีม Mystic Velvet & Gold พร้อมเครื่องเล่นดนตรีขับกล่อมบรรยากาศ BGM Audio Deck',
+    detail: 'Rider-Waite 3-Card Tarot Reading Application (v1.0) เป็นโปรแกรมทำนายดวงชะตาด้วยไพ่ทาโรต์ตามศาสตร์โบราณ โดยจำลองรูปแบบการวางไพ่ 3 ใบ (3-Card Spread) ได้แก่ 1. อดีต (Past) 2. ปัจจุบัน (Present) 3. อนาคต (Future) ตัวโปรแกรมได้รับการออกแบบในธีม Mystic Velvet & Gold โต๊ะกำมะหยี่สีม่วงมิดไนท์ประดับขอบทองคำ พร้อมเครื่องเล่นดนตรีขับกล่อมบรรยากาศ (BGM Audio Deck) ในตัว ควบคุมระดับเสียงและเลือกเพลงได้อิสระ',
+    price: 249,
+    coverUrl: 'https://images.unsplash.com/photo-1633511090164-b43840ea1607?auto=format&fit=crop&w=800&q=80',
+    category: 'Lifestyle & Divination Software',
+    pageCount: 112,
+    sampleChapter: 'บทที่ 1: ศาสตร์แห่งไพ่ทาโรต์ Rider-Waite และความหมายเชิงสัญลักษณ์\nบทที่ 2: โครงสร้างการวางไพ่ 3 มิติเวลา (3-Card Spread: อดีต-ปัจจุบัน-อนาคต)\nบทที่ 3: ระบบขับกล่อมบรรยากาศ BGM Audio Deck และ Mystic Velvet Interface\nบทที่ 4: ขั้นตอนการทำนาย สับไพ่ หงายไพ่ และการแปลผลชะตา\nบทที่ 5: การประมวลผลและการบันทึกคำทำนาย',
+    filePath: 'ebooks/tarot-app-guide.pdf'
   },
   {
     id: 'book-3',
-    title: 'Modern Cloud & Vercel Deployment Guide',
-    author: 'ณัฐพงษ์ คลาวด์มาสเตอร์',
-    description: 'แนวทางการนำโปรเจกต์ขึ้นสู่ Production อย่างมั่นใจ พร้อมระบบ CI/CD, Environment Variables และ Performance Tuning',
-    detail: 'เรียนรู้วิธีการเชื่อมต่อ GitHub กับ Vercel, การจัดการ Environment Variables ทั้งสำหรับ staging และ production, การตรวจสอบ Edge Functions และการ optimize ภาพและ assets',
-    price: 240,
-    coverUrl: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=80',
-    category: 'DevOps & Cloud',
-    pageCount: 220,
-    sampleChapter: 'บทที่ 1: พื้นฐาน Cloud Native และ Serverless\nบทที่ 2: GitHub Workflow สู่ Vercel Production\nบทที่ 3: การจัดการ Secret Key และ Security Checklist\nบทที่ 4: การมอนิเตอร์และวิเคราะห์ Logs',
-    filePath: 'ebooks/modern-cloud-deployment.pdf'
-  },
-  {
-    id: 'book-4',
-    title: 'Android WebView & MIT App Inventor Pro',
-    author: 'สมชาย โมบายเดฟ',
-    description: 'เปลี่ยนเว็บของคุณให้กลายเป็นแอปพลิเคชันมือถือ Android พร้อมใช้งาน ส่งต่อและเผยแพร่ได้อย่างง่ายดาย',
-    detail: 'สอนตั้งแต่การสร้างโปรเจกต์ใน MIT App Inventor การควบคุม WebViewer การจัดการปุ่มย้อนกลับ (Back Navigation) การตั้งค่าความปลอดภัย SSL ไปจนถึงการ Build เป็นไฟล์ .apk และ Export .aia เพื่อนำส่งงาน',
-    price: 199,
-    coverUrl: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80',
-    category: 'Mobile Application',
-    pageCount: 190,
-    sampleChapter: 'บทที่ 1: ทำความเข้าใจ WebView Wrapper vs Native App\nบทที่ 2: การออกแบบ Screen1 และบล็อกคำสั่ง CanGoBack\nบทที่ 3: การกำหนดเงื่อนไขความปลอดภัย SSL และ Location\nบทที่ 4: การทดสอบบน AI Companion และการ Build APK',
-    filePath: 'ebooks/android-webview-guide.pdf'
+    title: 'คู่มือการพัฒนาและการใช้งาน: SQLite Task Manager PRO (Futuristic Edition)',
+    author: 'นักศึกษาผู้จัดทำโครงงานวิชาเลือกสรร',
+    description: 'ระบบบริหารจัดการงานส่วนบุคคลระดับมืออาชีพ ผสานฐานข้อมูล SQLite และดีไซน์ Futuristic Minimalist พร้อม Dashboard สถิติ, ถังขยะกู้คืนงาน, Export/Import CSV และระบบสำรองฐานข้อมูล',
+    detail: 'SQLite Task Manager PRO (v2.0) - Futuristic Minimalist Edition เป็นระบบบริหารจัดการงานส่วนบุคคลระดับมืออาชีพที่ผสานประสิทธิภาพของฐานข้อมูล SQLite เข้ากับส่วนติดต่อผู้ใช้สไตล์ Futuristic Minimalist เรียบหรู คมชัด และทันสมัย รองรับการยืนยันตัวตน (Authentication), จัดหมวดหมู่งาน, จัดลำดับความสำคัญ (Low/Medium/High/Urgent), สรุปสถิติผ่าน Dashboard Cards, ถังขยะกู้คืนงาน (Recycle Bin), นำเข้า-ส่งออก CSV, ระบบแจ้งเตือนงานด่วน, สลับธีมมืด/สว่าง (Dark/Light Mode) และการสำรอง-กู้คืนฐานข้อมูล (Backup & Restore)',
+    price: 290,
+    coverUrl: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=800&q=80',
+    category: 'Productivity & Database Engineering',
+    pageCount: 149,
+    sampleChapter: 'บทที่ 1: สถาปัตยกรรม SQLite Database และระบบ Authentication ผู้ดูแล\nบทที่ 2: การออกแบบ Futuristic Minimalist UI และ Theme Switching\nบทที่ 3: แผงสถิติ Dashboard Cards และการวิเคราะห์สถานะงาน\nบทที่ 4: การจัดการงานครบวงจร (CRUD, Filters, Priority, Categories)\nบทที่ 5: ระบบถังขยะกู้คืน (Soft Delete / Restore) และการ Export/Import CSV\nบทที่ 6: การ Backup & Restore ฐานข้อมูล SQLite',
+    filePath: 'ebooks/task-manager-pro-guide.pdf'
   }
 ];
 
@@ -59,7 +46,6 @@ export const BOOKS_DATA: Book[] = [
 // Persist across Next.js Turbopack fast reloads using globalThis
 const globalOrders: Record<string, Order> = 
   (globalThis as any).__orders || ((globalThis as any).__orders = {});
-
 
 export function getLocalBooks(): Book[] {
   return BOOKS_DATA;
@@ -103,6 +89,16 @@ export function markLocalOrderPaid(orderId: string): Order | undefined {
   order.status = 'PAID';
   order.paidAt = new Date().toISOString();
   // Simulated temporary signed download URL (expires in 24 hours)
-  order.downloadUrl = `/api/download?orderId=${encodeURIComponent(order.id)}&token=${Buffer.from(order.id + ':' + order.customerEmail).toString('base64')}`;
+  const tokenPayload = {
+    id: order.id,
+    name: order.customerName,
+    email: order.customerEmail,
+    title: order.bookTitle,
+    price: order.bookPrice,
+    status: 'PAID',
+    paidAt: Date.now()
+  };
+  const token = Buffer.from(JSON.stringify(tokenPayload)).toString('base64');
+  order.downloadUrl = `/api/download?orderId=${encodeURIComponent(order.id)}&token=${encodeURIComponent(token)}`;
   return order;
 }
