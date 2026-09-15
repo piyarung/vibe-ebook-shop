@@ -66,7 +66,7 @@ export default function MockPaymentPage({ params }: PageProps) {
           <span>ระบบจำลองการชำระเงิน (DEMO ONLY)</span>
         </div>
         <p className="text-xs sm:text-sm leading-relaxed text-amber-800 dark:text-amber-300">
-          หน้านี้เป็นระบบสาธิตสถานะคำสั่งซื้อสำหรับงานวิจัย/ใบงานเท่านั้น <strong>ห้ามโอนเงินจริง</strong> และไม่มีการตัดบัตรเครดิตใด ๆ ทั้งสิ้น
+          หน้านี้เป็นระบบสาธิตสถานะคำสั่งซื้อสำหรับระบบจำลองเท่านั้น <strong>ห้ามโอนเงินจริง</strong> และไม่มีการตัดบัตรเครดิตใด ๆ ทั้งสิ้น
         </p>
       </div>
 

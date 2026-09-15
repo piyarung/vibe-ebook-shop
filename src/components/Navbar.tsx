@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { BookOpen, History, Menu, X } from 'lucide-react';
+import { BookOpen, Search, Menu, X } from 'lucide-react';
 import { DemoBadge } from './DemoBadge';
 
 export function Navbar() {
@@ -28,8 +28,8 @@ export function Navbar() {
             หน้าร้าน E-book
           </Link>
           <Link href="/track" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1.5">
-            <History className="w-4 h-4" />
-            ประวัติการสั่งซื้อ
+            <Search className="w-4 h-4" />
+            ติดตามคำสั่งซื้อ
           </Link>
           <DemoBadge />
         </nav>
@@ -61,8 +61,8 @@ export function Navbar() {
             onClick={() => setMobileMenuOpen(false)}
             className="block text-base font-medium text-slate-800 dark:text-slate-200 hover:text-blue-600 py-1 flex items-center gap-2"
           >
-            <History className="w-4 h-4" />
-            ประวัติการสั่งซื้อ
+            <Search className="w-4 h-4" />
+            ติดตามคำสั่งซื้อ
           </Link>
         </div>
       )}

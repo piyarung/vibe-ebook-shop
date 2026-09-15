@@ -34,7 +34,7 @@ export default function HomePage() {
               href="/track"
               className="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold px-5 py-3 rounded-xl transition-all text-sm"
             >
-              ประวัติการสั่งซื้อ
+              ติดตามคำสั่งซื้อ
             </Link>
           </div>
         </div>

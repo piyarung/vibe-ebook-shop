@@ -22,7 +22,7 @@ export default function RootLayout({
         <footer className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-8 text-center text-xs text-slate-500 dark:text-slate-400">
           <div className="max-w-6xl mx-auto px-4 space-y-2">
             <p className="font-semibold text-slate-700 dark:text-slate-300">
-              Vibe Coding: E-book Shop &bull; ใบงานที่ 5
+              Vibe Coding: E-book Shop
             </p>
             <p>
               ระบบนี้เป็นโครงงานเพื่อการศึกษา สาธิตการเชื่อมต่อ Next.js + Supabase + Resend + Vercel + MIT App Inventor
