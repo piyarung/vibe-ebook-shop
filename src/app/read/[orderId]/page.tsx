@@ -7,6 +7,7 @@ import { getLocalOrder, getLocalBookById, getLocalBooks } from '@/lib/mock-data'
 import { DemoBadge } from '@/components/DemoBadge';
 
 import { getOrderHistory } from '@/lib/order-storage';
+import { DownloadOptions } from '@/components/DownloadOptions';
 
 interface PageProps {
   params: Promise<{ orderId: string }>;
@@ -76,15 +77,7 @@ export default function EbookReaderPage({ params }: PageProps) {
           >
             ขนาดตัวอักษร: {fontSize === 'normal' ? 'ก' : 'ก+'}
           </button>
-          <a
-            href={`/api/download?orderId=${encodeURIComponent(orderId)}`}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-blue-600 text-white text-xs font-semibold hover:bg-blue-700 shadow-sm"
-          >
-            <Download className="w-3.5 h-3.5" />
-            เปิดไฟล์ PDF
-          </a>
+          <DownloadOptions orderId={orderId} variant="reader" />
         </div>
       </div>
 

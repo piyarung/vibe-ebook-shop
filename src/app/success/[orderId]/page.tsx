@@ -4,6 +4,7 @@ import React, { useState, useEffect, use } from 'react';
 import Link from 'next/link';
 import { CheckCircle2, Download, Mail, ArrowRight, BookOpen, Clock, ShieldCheck, History } from 'lucide-react';
 import { DemoBadge } from '@/components/DemoBadge';
+import { DownloadOptions } from '@/components/DownloadOptions';
 
 interface PageProps {
   params: Promise<{ orderId: string }>;
@@ -71,30 +72,8 @@ export default function SuccessPage({ params }: PageProps) {
         </div>
 
         {/* Reading & Download Actions */}
-        <div className="pt-2 space-y-3">
-          <h3 className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
-            เข้าสู่เนื้อหา E-book
-          </h3>
-          <Link
-            href={`/read/${encodeURIComponent(orderId)}`}
-            className="w-full py-4 px-6 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-base shadow-lg shadow-blue-500/25 transition-all flex items-center justify-center gap-2 hover:-translate-y-0.5"
-          >
-            <BookOpen className="w-5 h-5" />
-            เปิดอ่าน E-book ทันที (แนะนำสำหรับ Mobile App)
-          </Link>
-          <a
-            href={`/api/download?orderId=${encodeURIComponent(orderId)}`}
-            target="_blank"
-            rel="noreferrer"
-            className="w-full py-3 px-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold text-xs sm:text-sm transition-all flex items-center justify-center gap-2"
-          >
-            <Download className="w-4 h-4" />
-            เปิดไฟล์ PDF มาตรฐาน (เปิดในเบราว์เซอร์)
-          </a>
-          <p className="text-[11px] text-slate-400 flex items-center justify-center gap-1.5">
-            <Clock className="w-3.5 h-3.5" />
-            ลิงก์เข้าถึงมีความปลอดภัยและมีอายุ 24 ชั่วโมง (Temporary Signed Link)
-          </p>
+        <div className="pt-2">
+          <DownloadOptions orderId={orderId} />
         </div>
 
         <div className="border-t border-slate-100 dark:border-slate-800 pt-6 flex flex-col sm:flex-row items-center justify-center gap-4 text-xs font-semibold text-slate-600 dark:text-slate-300">
