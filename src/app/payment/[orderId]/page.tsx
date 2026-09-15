@@ -4,7 +4,7 @@ import React, { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { DemoBadge } from '@/components/DemoBadge';
-import { updateOrderStatusInHistory } from '@/lib/order-storage';
+import { updateOrderStatusInHistory, getOrderHistory } from '@/lib/order-storage';
 import { CreditCard, AlertTriangle, CheckCircle, Loader2, ArrowLeft, ShieldCheck, QrCode } from 'lucide-react';
 
 interface PageProps {
@@ -24,9 +24,14 @@ export default function MockPaymentPage({ params }: PageProps) {
     setErrorMsg('');
 
     try {
-      // Retrieve stored order info from local history if available
-      const history = typeof window !== 'undefined' ? (JSON.parse(localStorage.getItem('vibe_ebook_order_history') || '[]') as any[]) : [];
-      const current = history.find((o: any) => o.id === orderId);
+      // Retrieve stored order info safely from history if available
+      let current: any = null;
+      try {
+        const history = getOrderHistory();
+        current = history.find((o: any) => o.id === orderId);
+      } catch {
+        // fallback
+      }
 
       const res = await fetch('/api/pay', {
         method: 'POST',

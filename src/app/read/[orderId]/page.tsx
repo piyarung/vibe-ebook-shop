@@ -6,6 +6,8 @@ import { ArrowLeft, BookOpen, Download, CheckCircle2, ShieldCheck, Printer, Shar
 import { getLocalOrder, getLocalBookById, getLocalBooks } from '@/lib/mock-data';
 import { DemoBadge } from '@/components/DemoBadge';
 
+import { getOrderHistory } from '@/lib/order-storage';
+
 interface PageProps {
   params: Promise<{ orderId: string }>;
 }
@@ -19,9 +21,9 @@ export default function EbookReaderPage({ params }: PageProps) {
   const [fontSize, setFontSize] = useState<'normal' | 'large'>('normal');
 
   useEffect(() => {
-    // Check local storage history first
+    // Check local storage history first using safe helper
     try {
-      const history = typeof window !== 'undefined' ? (JSON.parse(localStorage.getItem('vibe_ebook_order_history') || '[]') as any[]) : [];
+      const history = getOrderHistory();
       const found = history.find((o: any) => o.id === orderId);
       if (found) {
         setOrder(found);
