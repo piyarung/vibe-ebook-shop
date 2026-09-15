@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, use } from 'react';
 import Link from 'next/link';
-import { CheckCircle2, Download, Mail, ArrowRight, BookOpen, Clock, ShieldCheck, FileCheck } from 'lucide-react';
+import { CheckCircle2, Download, Mail, ArrowRight, BookOpen, Clock, ShieldCheck, History } from 'lucide-react';
 import { DemoBadge } from '@/components/DemoBadge';
 
 interface PageProps {
@@ -94,8 +94,8 @@ export default function SuccessPage({ params }: PageProps) {
             href="/track"
             className="hover:text-blue-600 flex items-center gap-1 py-1"
           >
-            <FileCheck className="w-4 h-4" />
-            เปิดหน้าค้นหา & ตรวจสอบสถานะคำสั่งซื้อ
+            <History className="w-4 h-4" />
+            ดูประวัติการสั่งซื้อทั้งหมด
           </Link>
           <span className="hidden sm:inline text-slate-300">&bull;</span>
           <Link

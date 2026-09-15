@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { getLocalBooks } from '@/lib/mock-data';
 import { Book } from '@/types';
 import { DemoBadge } from '@/components/DemoBadge';
+import { saveOrderToHistory } from '@/lib/order-storage';
 import { ArrowLeft, ShoppingBag, ShieldAlert, CheckCircle, Loader2 } from 'lucide-react';
 
 function CheckoutContent() {
@@ -62,6 +63,19 @@ function CheckoutContent() {
       if (!res.ok || !data.success) {
         throw new Error(data.error || 'ไม่สามารถสร้างคำสั่งซื้อได้');
       }
+
+      // Save to client order history so it immediately appears in "ประวัติการสั่งซื้อ"
+      saveOrderToHistory({
+        id: data.orderId,
+        customerName: customerName.trim(),
+        customerEmail: customerEmail.trim().toLowerCase(),
+        bookId: selectedBook.id,
+        bookTitle: selectedBook.title,
+        bookPrice: selectedBook.price,
+        coverUrl: selectedBook.coverUrl,
+        status: 'PENDING',
+        createdAt: new Date().toISOString(),
+      });
 
       // Redirect to mock payment page with orderId
       router.push(`/payment/${encodeURIComponent(data.orderId)}`);

@@ -4,6 +4,7 @@ import React, { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { DemoBadge } from '@/components/DemoBadge';
+import { updateOrderStatusInHistory } from '@/lib/order-storage';
 import { CreditCard, AlertTriangle, CheckCircle, Loader2, ArrowLeft, ShieldCheck, QrCode } from 'lucide-react';
 
 interface PageProps {
@@ -34,6 +35,9 @@ export default function MockPaymentPage({ params }: PageProps) {
       if (!res.ok || !data.success) {
         throw new Error(data.error || 'จำลองการชำระเงินไม่สำเร็จ');
       }
+
+      // Update status in local order history
+      updateOrderStatusInHistory(orderId, 'PAID', data.order?.downloadUrl);
 
       // Redirect to success page
       router.push(`/success/${encodeURIComponent(orderId)}`);

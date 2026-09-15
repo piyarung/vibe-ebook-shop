@@ -56,7 +56,10 @@ export const BOOKS_DATA: Book[] = [
 ];
 
 // Fallback in-memory order store for local dev / demo when Supabase isn't configured yet
-const globalOrders: Record<string, Order> = {};
+// Persist across Next.js Turbopack fast reloads using globalThis
+const globalOrders: Record<string, Order> = 
+  (globalThis as any).__orders || ((globalThis as any).__orders = {});
+
 
 export function getLocalBooks(): Book[] {
   return BOOKS_DATA;
