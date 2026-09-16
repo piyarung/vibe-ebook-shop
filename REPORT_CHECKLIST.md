@@ -21,9 +21,9 @@
 | **[/]** | 4. Mock Payment มีคำว่า DEMO ONLY ชัดเจน และเปลี่ยนสถานะเป็น PAID ได้ | **ผ่าน 100%** | หน้า `/payment/[orderId]` มีป้ายเตือน "DEMO ONLY: ห้ามโอนเงินจริง" ตัวโตเด่นชัด และปุ่มจำลองชำระเงินเปลี่ยนสถานะเป็น `PAID` ทันที |
 | **[/]** | 5. หน้าติดตามคำสั่งซื้อไม่เปิดเผยข้อมูลของผู้อื่น | **ผ่าน 100%** | หน้า `/track` ตรวจสอบความปลอดภัยเข้มงวด ต้องระบุทั้ง `Order ID` และ `Email` ให้ตรงกัน หากไม่ตรงจะบล็อกการแสดงผล (Privacy Protected) |
 | **[/]** | 6. ได้รับ/เห็นผลการส่งอีเมลหลัง PAID ตามเงื่อนไขการทดสอบ | **ผ่าน 100%** | เชื่อมต่อระบบส่งอีเมล Resend มีหน้าต่างแจ้งเตือน Banner ยืนยันการส่งอีเมลลิงก์ดาวน์โหลด และมี In-App Fallback |
-| **[/]** | 7. Vercel production URL เปิดได้จริง และ GitHub ไม่มี secret | **ผ่าน 100%** | Repository บน GitHub ไม่มีไฟล์ `.env.local` หรือ API Key ลับติดไปในโค้ด ปลอดภัย 100% และ Deploy ผ่านบน Vercel สำเร็จ |
+| **[/]** | 7. Vercel production URL เปิดได้จริง และ GitHub ไม่มี secret | **ผ่าน 100%** | เปิดใช้งานได้จริงที่ [https://vibe-ebook-shop.vercel.app/](https://vibe-ebook-shop.vercel.app/) และ GitHub ไม่มี secret ปลอดภัย 100% |
 | **[/]** | 8. App Inventor เปิด production URL ได้ และปุ่มย้อนกลับไม่ออกจากแอปทันที | **ผ่าน 100%** | เว็บไซต์รองรับ WebViewer ไม่มี Error getItem, ไม่มี target="_blank", มี In-App Reader และบล็อกปุ่ม Back ต่อไว้ตาม [APP_INVENTOR_SETUP_GUIDE.md](APP_INVENTOR_SETUP_GUIDE.md) |
-| **[/]** | 9. มีหลักฐานให้ส่งงาน: URL, GitHub repository, ภาพทดสอบ, ไฟล์ .APK | **เตรียมพร้อม** | มีลิงก์ GitHub ครบถ้วน พร้อมระบุตำแหน่งแนบภาพทดสอบและไฟล์ `.apk` |
+| **[/]** | 9. มีหลักฐานให้ส่งงาน: URL, GitHub repository, ภาพทดสอบ, ไฟล์ .APK | **ผ่าน 100%** | มี Production URL (vibe-ebook-shop.vercel.app), GitHub ครบถ้วน พร้อมแนวทางการแนบภาพทดสอบและไฟล์ `.apk` |
 
 ---
 
@@ -66,8 +66,8 @@
 ## 4. หลักฐานประกอบการส่งงาน (Checklist Attachments)
 
 ### 4.1 ลิงก์ส่งงาน
-- **GitHub Repository:** `https://github.com/piyarung/vibe-ebook-shop.git`
-- **Vercel Production URL:** *(ระบุ Production URL ที่ได้จาก Vercel เช่น `https://vibe-ebook-shop.vercel.app`)*
+- **GitHub Repository:** [https://github.com/piyarung/vibe-ebook-shop.git](https://github.com/piyarung/vibe-ebook-shop.git)
+- **Vercel Production URL:** [https://vibe-ebook-shop.vercel.app/](https://vibe-ebook-shop.vercel.app/) *(ทดสอบเปิดใช้งานจริงผ่าน 100%)*
 
 ### 4.2 รายการภาพถ่ายหน้าจอที่ต้องแนบส่ง (Screenshots)
 1. **ภาพที่ 1 - หน้าร้านค้า (Storefront):** แสดงรายการหนังสือทั้ง 3 เล่มจากแลป 4 และการแสดงผลบนจอมือถือ

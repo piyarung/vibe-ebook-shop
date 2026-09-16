@@ -26,9 +26,9 @@
 #### 1.2 การตั้งค่า `WebViewer1`
 - **Width:** `Fill parent...` (กว้างเต็มจอ)
 - **Height:** `Fill parent...` (สูงเต็มจอ)
-- **HomeUrl:** ใส่ Vercel Production URL ของคุณ (เช่น `https://vibe-ebook-shop.vercel.app`)
+- **HomeUrl:** `https://vibe-ebook-shop.vercel.app/` (Production URL ที่เปิดใช้งานจริง)
   > [!IMPORTANT]
-  > **ห้ามใส่ `localhost` หรือ `127.0.0.1`** เพราะสมาร์ตโฟนไม่สามารถเชื่อมต่อไปยังเครื่องคอมพิวเตอร์ผ่าน localhost ได้
+  > **ห้ามใส่ `localhost` หรือ `127.0.0.1`** ให้ใส่ `https://vibe-ebook-shop.vercel.app/` เท่านั้น เพื่อให้สมาร์ตโฟนสามารถเชื่อมต่อได้จริง
 - **FollowLinks:** `true` (ติ๊กถูก)
 - **IgnoreSslErrors:** `false` (ห้ามติ๊ก เพื่อความปลอดภัยตามที่ใบงานกำหนด)
 - **UsesLocation:** `false` (ไม่ติ๊ก)
