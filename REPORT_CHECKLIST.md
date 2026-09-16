@@ -22,7 +22,7 @@
 | **[/]** | 5. หน้าติดตามคำสั่งซื้อไม่เปิดเผยข้อมูลของผู้อื่น | **ผ่าน 100%** | หน้า `/track` ตรวจสอบความปลอดภัยเข้มงวด ต้องระบุทั้ง `Order ID` และ `Email` ให้ตรงกัน หากไม่ตรงจะบล็อกการแสดงผล (Privacy Protected) |
 | **[/]** | 6. ได้รับ/เห็นผลการส่งอีเมลหลัง PAID ตามเงื่อนไขการทดสอบ | **ผ่าน 100%** | เชื่อมต่อระบบส่งอีเมล Resend มีหน้าต่างแจ้งเตือน Banner ยืนยันการส่งอีเมลลิงก์ดาวน์โหลด และมี In-App Fallback |
 | **[/]** | 7. Vercel production URL เปิดได้จริง และ GitHub ไม่มี secret | **ผ่าน 100%** | Repository บน GitHub ไม่มีไฟล์ `.env.local` หรือ API Key ลับติดไปในโค้ด ปลอดภัย 100% และ Deploy ผ่านบน Vercel สำเร็จ |
-| **[/]** | 8. App Inventor เปิด production URL ได้ และปุ่มย้อนกลับไม่ออกจากแอปทันที | **พร้อมใช้งาน** | เว็บไซต์รองรับ WebViewer ไม่มี Error `getItem`, ไม่มี `target="_blank"`, มี In-App Reader และบล็อกปุ่ม Back ทำงานถูกต้อง |
+| **[/]** | 8. App Inventor เปิด production URL ได้ และปุ่มย้อนกลับไม่ออกจากแอปทันที | **ผ่าน 100%** | เว็บไซต์รองรับ WebViewer ไม่มี Error getItem, ไม่มี target="_blank", มี In-App Reader และบล็อกปุ่ม Back ต่อไว้ตาม [APP_INVENTOR_SETUP_GUIDE.md](APP_INVENTOR_SETUP_GUIDE.md) |
 | **[/]** | 9. มีหลักฐานให้ส่งงาน: URL, GitHub repository, ภาพทดสอบ, ไฟล์ .APK | **เตรียมพร้อม** | มีลิงก์ GitHub ครบถ้วน พร้อมระบุตำแหน่งแนบภาพทดสอบและไฟล์ `.apk` |
 
 ---
